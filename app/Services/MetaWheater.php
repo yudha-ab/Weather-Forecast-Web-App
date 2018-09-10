@@ -17,7 +17,11 @@ class MetaWheater
         $client = new Client;
         $result = $client->request('GET', 'https://www.metaweather.com/api/location/search/?query='.$city);
         $body = $result->getBody()->getContents();
-        return json_decode($body, TRUE);
+        $body = json_decode($body, TRUE);
+        if ($body === NULL){
+            return 'not found';
+        }
+        return self::week($body[0]['woeid']);
     }
 
     /**
@@ -30,5 +34,7 @@ class MetaWheater
     private static function week($woeid){
         $client = new Client;
         $result = $client->request('GET', 'https://www.metaweather.com/api/location/'.$woeid);
+        $result = $result->getBody()->getContents();
+        return json_decode($result, TRUE);
     }
 }

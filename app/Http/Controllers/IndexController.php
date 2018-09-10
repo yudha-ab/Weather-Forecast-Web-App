@@ -14,6 +14,6 @@ class IndexController extends Controller
     public function index()
     {
         $wheater = weather::getWheater('new delhi');
-        dd($wheater);
+        return response()->json($wheater);
     }
 }
