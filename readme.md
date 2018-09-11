@@ -1,57 +1,32 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Weather Forecast Website App #
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Tentang Projek Ini ##
+Proyek ini adalah salah satu contoh aplikasi sederhana prakiraan cuaca menggunakan bahasa pemrograman [PHP](https://secure.php.net/) dengan framework [Laravel](https://laravel.com/) dan [MetaWeather](https://www.metaweather.com) sebagai penyedia API data pihak ketiga untuk data prakiraan cuaca.
 
-## About Laravel
+### Halaman Pada Aplikasi ###
+Pada aplikasi ini terdapat dua halaman, yaitu halaman index/ home dan halaman dashboard.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Untuk halaman index/ home digunakan untuk menampilkan data prakiraan cuaca pada hari ini hingga lima hari ke depan. Pada halaman ini juga terdapat kolom pencarian nama kota di seluruh dunia dan yang terdapat pada database MetaWeather tentunya. Secara default, untuk tampilan awal akan menampilkan prakiraan cuaca untuk Kota Jakarta, Indonesia.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Pada halaman kedua yaitu halaman dashboard, adalah untuk menampilkan data kota apa saja yang pernah dicari, status kota yang pernah dicari dan total hit untuk masing-masing kota. Data tersebut tersimpan dalam sebuah file json bernama `city.json`
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+## Instalasi ##
+Perlu diketahui, saat saya mengembangkan aplikasi ini, pada komputer saya menggunakan PHP versi 7.0.30 dan menggunakan server Apache 2.0.
 
-## Learning Laravel
+Untuk versi Laravel ini sendiri yaitu menggunakan framework Laravel versi 5.5. Untuk penggunaan minimum pada Laravel versi 5.5 bisa dilihat pada tautan berikut: [link](https://laravel.com/docs/5.5/#installation).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+### Proses Instalasi ###
+* Clone project ini pada komputer anda ke dalam direktori website anda, contohnya `/Library/WebServer/Documents/`
+* Setelah proses cloning berhasil, buka terminal untuk masuk ke dalam direktori website anda, contohnya: `cd /Library/WebServer/Documents/weather-forecast`
+* Lakukan install dependensi framework Laravel melalui composer melalui terminal dengan perintah `composer install`, atau apabila muncul error atau pesan tidak berhasil lakukan dengan perintah `composer install --no-scripts`
+* Setelah proses instalasi selesai, buka browser anda dengan memasukkan alamat http://localhost/weather-forecast/public/, atau menggunakan virtual host sesuai settingan anda.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+## Cara Kerja Aplikasi ##
+Pada saat awal anda menjalankan aplikasi ini, anda akan berada pada halaman index, pada halaman ini anda akan ditampilkan prakiraan cuaca hari ini hingga lima hari ke depan. Data tersebut diperoleh dari API yang disediakan oleh [MetaWeather](https://www.metaweather.com/api/). Lalu, data kota yang tampil pada halaman tersebut disimpan di dalam sebuah file JSON bernama `city.json`. File tersebut berada pada direktori `<WEB_DIR>/weather-forecast/storage/app/public/`. Data dalam file tersebut berbentuk JSON.
 
-## Laravel Sponsors
+Lalu, ketika anda melakukan pencarian pada kolom pencarian, data prakiraan cuaca akan muncul, namun apabila data kota yang anda cari tidak tersedia, maka halaman website akan menampilkan sebuah alert yang mengindikasikan data yang anda cari tidak ditemukan.
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Ketika anda membuka pada halaman dashboard, maka akan muncul data kota apa saja yang pernah dicari. Data tersebut berisi daftar kota, status dan total hits. Data dalam tabel tersebut ditampilkan sesuai pada file `<WEB_DIR>/weather-forecast/storage/app/public/city.json`, atau data kota apa saja yang pernah anda cari.
 
 ## License
 
