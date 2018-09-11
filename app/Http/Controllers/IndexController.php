@@ -13,7 +13,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $weather = weather::getWeather('jakarta');
+        $weather = weather::getWeather('malang');
         return view('welcome', ['data' => $weather]);
     }
 }

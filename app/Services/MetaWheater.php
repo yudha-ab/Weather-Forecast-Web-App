@@ -19,7 +19,7 @@ class MetaWheater
         $body = $result->getBody()->getContents();
         $body = json_decode($body, TRUE);
         if (empty($body)){
-            return 'not found';
+            return null;
         }
         return self::week($body[0]['title'], $body[0]['woeid']);
     }

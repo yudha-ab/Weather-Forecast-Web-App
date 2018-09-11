@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('forecast')
+@if ($data === NULL)
+<script type="text/javascript">
+    alert("data not found");
+</script>
+@else
 <div class="today forecast">
     <div class="forecast-header">
         <div class="day">{{ date('l', strtotime($data[0]['days'])) }}</div>
@@ -33,4 +38,5 @@
     </div>
 </div>
 @endfor
+@endif
 @endsection
