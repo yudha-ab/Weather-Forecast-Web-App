@@ -20,6 +20,7 @@ class IndexController extends Controller
     }
 
     public function dashboard(){
-        return 'dashboard';
+        $data = weather::getDashboardData();
+        return view('dashboard', ['current' => 'dashboard', 'data' => $data]);
     }
 }

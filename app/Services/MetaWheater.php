@@ -99,7 +99,22 @@ class MetaWheater
                 Storage::disk('public')->put('city.json', json_encode($array_city));
             }
         }catch(\Exception $e){
-            dd($e);
+            return null;
+        }
+    }
+
+    public static function getDashboardData()
+    {
+        if(!Storage::disk('public')->exists('city.json')){
+            // data not found
+        }else{
+            $jsonData = Storage::disk('public')->get('city.json');
+            $data = json_decode($jsonData, TRUE);
+
+            // sort by key
+            $dataObject = new \ArrayObject($data);
+            $dataObject->ksort();
+            return ($dataObject);
         }
     }
 }

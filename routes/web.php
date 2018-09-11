@@ -13,3 +13,5 @@
 
 Route::get('/', "IndexController@index");
 Route::post("/", "IndexController@index");
+
+Route::get('/dashboard', 'IndexController@dashboard');

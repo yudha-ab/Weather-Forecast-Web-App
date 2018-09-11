@@ -5,6 +5,15 @@
 <script type="text/javascript">
     alert("data not found");
 </script>
+<div class="hero" data-bg-image="{{ asset('images/banner.png') }}">
+    <div class="container">
+        <form action="" method="post" class="find-location">
+            {{ csrf_field() }}
+            <input type="text" name="q" placeholder="Find your location...">
+            <input type="submit" value="Find">
+        </form>
+    </div>
+</div>
 @else
 <div class="hero" data-bg-image="{{ asset('images/banner.png') }}">
     <div class="container">
