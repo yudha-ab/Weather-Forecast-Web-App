@@ -19,6 +19,8 @@ Untuk versi Laravel ini sendiri yaitu menggunakan framework Laravel versi 5.5. U
 * Clone project ini pada komputer anda ke dalam direktori website anda, contohnya `/Library/WebServer/Documents/`
 * Setelah proses cloning berhasil, buka terminal untuk masuk ke dalam direktori website anda, contohnya: `cd /Library/WebServer/Documents/weather-forecast`
 * Lakukan install dependensi framework Laravel melalui composer melalui terminal dengan perintah `composer install`, atau apabila muncul error atau pesan tidak berhasil lakukan dengan perintah `composer install --no-scripts`
+* Setelah itu, masih dalam terminal yang sama, masukkan command untuk copy file .env.example menjadi .env dengan cara `cp .env.example .env`
+* Jalankan perintah `php artisan key:generate`
 * Setelah proses instalasi selesai, buka browser anda dengan memasukkan alamat http://localhost/weather-forecast/public/, atau menggunakan virtual host sesuai settingan anda.
 
 ## Cara Kerja Aplikasi ##
