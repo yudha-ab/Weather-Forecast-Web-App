@@ -50,7 +50,7 @@ class MetaWheater
             $data[$key]['weather_name'] = $value['weather_state_name'];
             $data[$key]['weather_icon'] = config('constants.META_WEATHER.IMG_URL').$value['weather_state_abbr'].'.svg';
             $data[$key]['wind'] = round($value['wind_speed']*1.60934, 2).' km/h';
-            $data[$key]['direction'] = $value['wind_direction_compass'];
+            $data[$key]['direction'] = config('constants.COMPASS.'.$value['wind_direction_compass']);
         }
         return $data;
     }
