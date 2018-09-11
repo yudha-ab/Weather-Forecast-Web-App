@@ -13,12 +13,12 @@ class MetaWheater
      * @return array $return of result in array
      * 
      */
-    public static function getWheater($city){
+    public static function getWeather($city){
         $client = new Client;
-        $result = $client->request('GET', 'https://www.metaweather.com/api/location/search/?query='.$city);
+        $result = $client->request('GET', config('constants.META_WEATHER.QUERY_URL').$city);
         $body = $result->getBody()->getContents();
         $body = json_decode($body, TRUE);
-        if ($body === NULL){
+        if (empty($body)){
             return 'not found';
         }
         return self::week($body[0]['woeid']);
@@ -28,13 +28,27 @@ class MetaWheater
      * function week()
      * to find weather forecast in a week (6 days from now)
      * 
-     * @param integer Where On Earth ID, based on getWheater() woeid if found
+     * @param integer Where On Earth ID, based on getWeather() woeid if found
      * @return array a set array of result and assets for weather icon
      */
     private static function week($woeid){
         $client = new Client;
-        $result = $client->request('GET', 'https://www.metaweather.com/api/location/'.$woeid);
+        $result = $client->request('GET', config('constants.META_WEATHER.WOEID_URL').$woeid);
         $result = $result->getBody()->getContents();
-        return json_decode($result, TRUE);
+        $array_result = json_decode($result, TRUE);
+        $weather_a_week = $array_result['consolidated_weather'];
+        
+        // data rendering
+        $data = [];
+        foreach ($weather_a_week AS $key=>$value){
+            $data[$key]['temperature'] = round($value['the_temp'], 2)."&deg;C";
+            $data[$key]['days'] = $value['applicable_date'];
+            $data[$key]['max_temp'] = round($value['max_temp'], 2)."&deg;C";
+            $data[$key]['min_temp'] = round($value['min_temp'], 2)."&deg;C";
+            $data[$key]['weather_name'] = $value['weather_state_name'];
+            $data[$key]['weather_icon'] = config('constants.META_WEATHER.IMG_URL').$value['weather_state_abbr'].'.svg';
+            $data[$key]['wind'] = round($value['wind_speed'], 2).'mph '.$value['wind_direction_compass'];
+        }
+        return $data;
     }
 }
