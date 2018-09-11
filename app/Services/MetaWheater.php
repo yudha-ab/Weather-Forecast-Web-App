@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use GuzzleHttp\Client;
+use Storage;
 
 class MetaWheater
 {
@@ -19,8 +20,10 @@ class MetaWheater
         $body = $result->getBody()->getContents();
         $body = json_decode($body, TRUE);
         if (empty($body)){
+            self::saveJson($city, 'not found');
             return null;
         }
+        self::saveJson($city, 'found');
         return self::week($body[0]['title'], $body[0]['woeid']);
     }
 
@@ -53,5 +56,50 @@ class MetaWheater
             $data[$key]['direction'] = config('constants.COMPASS.'.$value['wind_direction_compass']);
         }
         return $data;
+    }
+
+    /**
+     * function saveJson()
+     * to save search city name into json file
+     * 
+     * @param string $city, city name
+     * @param boolean $status, status is true or false (found or not found),
+     *  so we can get not found city list and total hit from city found
+     */
+    private static function saveJson($city, $status){
+        try{
+            // read json file
+            if(!Storage::disk('public')->exists('city.json')){
+                $append[$city] = [
+                    'status' => $status,
+                    'total_hits' => 1
+                ];
+                Storage::disk('public')->put('city.json', json_encode($append));
+            }else{
+                $jsonData = Storage::disk('public')->get('city.json');
+                $array_city = json_decode($jsonData, TRUE);
+                // delete file first
+                Storage::disk('public')->delete('city.json');
+                if(array_key_exists($city, $array_city)){
+                    $append[$city] = [
+                        'status' => $array_city[$city]['status'],
+                        'total_hits' => $array_city[$city]['total_hits']+1
+                    ];
+                    
+                    unset($array_city[$city]);
+                    $array_city +=$append;
+                }else{
+                    $append[$city] = [
+                        'status' => $status,
+                        'total_hits' => 1
+                    ];
+                    $array_city +=$append;
+                }
+                // the file will be saved into storage/app/public directory
+                Storage::disk('public')->put('city.json', json_encode($array_city));
+            }
+        }catch(\Exception $e){
+            dd($e);
+        }
     }
 }
