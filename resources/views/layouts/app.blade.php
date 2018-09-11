@@ -24,34 +24,27 @@
 		<div class="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" class="branding">
+					<a href="{{url('/')}}" class="branding">
 						<img src="{{ asset('images/logo.png') }}" alt="" class="logo">
 						<div class="logo-type">
-							<h1 class="site-title">Agung Yudha</h1>
+							<h1 class="site-title">Weather Forecast</h1>
 						</div>
 					</a>
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item {{ $current == 'home'? 'current-menu-item':'' }}"><a href="{{url('/')}}">Home</a></li>
+							<li class="menu-item {{ $current == 'dashboard'? 'current-menu-item':'' }}"><a href="{{url('/dashboard')}}">Dashboard</a></li>
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
 				</div>
 			</div> <!-- .site-header -->
-
-			<div class="hero" data-bg-image="{{ asset('images/banner.png') }}">
-				<div class="container">
-					<form action="" method="post" class="find-location">
-						{{ csrf_field() }}
-						<input type="text" name="q" placeholder="Find your location...">
-						<input type="submit" value="Find">
-					</form>
-
-				</div>
-			</div>
-			<div class="forecast-table">
-				<div class="container">
-                    <div class="forecast-container">
-                        @section('forecast')
-                        @show
-                    </div>
-				</div>
-			</div>
-			
+			@section('page')
+			@show
 			<footer class="site-footer">
 				<div class="container">
 					<div class="row">

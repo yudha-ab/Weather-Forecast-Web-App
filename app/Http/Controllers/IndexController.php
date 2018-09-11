@@ -16,6 +16,10 @@ class IndexController extends Controller
     {
         $input = $request->all();
         $weather = weather::getWeather(isset($input['q'])?$input['q']:'jakarta');
-        return view('welcome', ['data' => $weather]);
+        return view('welcome', ['data' => $weather, 'current' => 'home']);
+    }
+
+    public function dashboard(){
+        return 'dashboard';
     }
 }
