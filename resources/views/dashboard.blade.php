@@ -16,17 +16,24 @@
                 @php
                 $i = 1;
                 @endphp
-                @foreach($data AS $key=>$value)
+                
+                @if($data === NULL)
                 <tr>
-                    <td data-th="#">{{ $i }}</td>
-                    <td data-th="Daftar Kota">{{ ucwords($key) }}</td>
-                    <td data-th="Status">{{ $value['status'] }}</td>
-                    <td data-th="Total Hits">{{ $value['total_hits'] }}</td>
+                    <td colspan="4">Data not found</td>
                 </tr>
-                @php
-                $i++;
-                @endphp
-                @endforeach
+                @else
+                    @foreach($data AS $key=>$value)
+                        <tr>
+                            <td data-th="#">{{ $i }}</td>
+                            <td data-th="Daftar Kota">{{ ucwords($key) }}</td>
+                            <td data-th="Status">{{ $value['status'] }}</td>
+                            <td data-th="Total Hits">{{ $value['total_hits'] }}</td>
+                        </tr>
+                        @php
+                            $i++;
+                        @endphp
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>
