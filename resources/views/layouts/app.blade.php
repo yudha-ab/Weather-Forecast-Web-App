@@ -21,7 +21,6 @@
 
 	</head>
 	<body>
-		
 		<div class="site-content">
 			<div class="site-header">
 				<div class="container">
@@ -36,8 +35,9 @@
 
 			<div class="hero" data-bg-image="{{ asset('images/banner.png') }}">
 				<div class="container">
-					<form action="#" class="find-location">
-						<input type="text" placeholder="Find your location...">
+					<form action="" method="post" class="find-location">
+						{{ csrf_field() }}
+						<input type="text" name="q" placeholder="Find your location...">
 						<input type="submit" value="Find">
 					</form>
 
