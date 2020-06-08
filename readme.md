@@ -1,7 +1,7 @@
 # Weather Forecast Website App #
 
 ## Tentang Projek Ini ##
-Proyek ini adalah salah satu contoh aplikasi sederhana prakiraan cuaca menggunakan bahasa pemrograman [PHP](https://secure.php.net/) dengan framework [Laravel](https://laravel.com/) dan [MetaWeather](https://www.metaweather.com) sebagai penyedia API data pihak ketiga untuk data prakiraan cuaca.
+Proyek ini adalah salah satu contoh aplikasi sederhana prakiraan cuaca menggunakan bahasa pemrograman [PHP](https://secure.php.net/) dengan framework [Laravel](https://laravel.com/) dan [MetaWeather](https://www.metaweather.com) sebagai penyedia API data pihak ketiga untuk data prakiraan cuaca. Tidak ada konfigurasi untuk database.
 
 ### Halaman Pada Aplikasi ###
 Pada aplikasi ini terdapat dua halaman, yaitu halaman index/ home dan halaman dashboard.
