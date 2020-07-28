@@ -2,9 +2,9 @@ name: Test PHPCS
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, development ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, development ]
 
 jobs:
   phpcs:
@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Check Directories
         run: ls -la
