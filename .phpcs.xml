@@ -10,7 +10,7 @@
 
     <exclude-pattern>*/vendor/*</exclude-pattern>
     
-    <file>/app/</file>
+    <file>app/</file>
 
     <rule ref="PSR12">
         <exclude name="PSR12.Classes.ClosingBrace.StatementAfter" />
