@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check Directories
+        run: ls -la
       - name: Composer Install
         run: composer install
       - name: PHP_CodeSniffer Check with Annotations
