@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Composer Install
+        run: composer install
       - name: PHP_CodeSniffer Check with Annotations
         uses: chekalsky/phpcs-action@v1.2.0
         with:
