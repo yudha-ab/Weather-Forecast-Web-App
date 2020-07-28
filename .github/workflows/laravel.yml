@@ -1,4 +1,4 @@
-name: Laravel
+name: Test PHPCS
 
 on:
   push:
@@ -14,3 +14,5 @@ jobs:
     steps:
       - name: PHP_CodeSniffer Check with Annotations
         uses: chekalsky/phpcs-action@v1.2.0
+        with:
+          phpcs_bin_path: './vendor/bin/phpcs'
