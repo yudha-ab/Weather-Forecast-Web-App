@@ -3,8 +3,16 @@ name: PHP Code Sniffer
 on:
   push:
     branches: [ master, development ]
+    paths:
+      - "**.php"
+      - ".phpcs.xml"
+      - ".github/workflows/phpcs.yml"
   pull_request:
     branches: [ master, development ]
+    paths:
+      - "**.php"
+      - ".phpcs.xml"
+      - ".github/workflows/phpcs.yml"
 
 jobs:
   phpcs:
