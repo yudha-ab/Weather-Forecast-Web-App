@@ -1,0 +1,34 @@
+name: PHP Code Sniffer
+
+on:
+  push:
+    branches: [ master, development ]
+  pull_request:
+    branches: [ master, development ]
+
+jobs:
+  phpcs:
+    name: phpcs
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+    
+      - name: Install PHP_CodeSniffer
+        run: |
+          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+          php phpcs.phar --version
+
+      - uses: tinovyatkin/action-php-codesniffer@v1
+        with:
+          files: "**.php" # you may customize glob as needed
+          phpcs_path: php phpcs.phar
+          standard: .phpcs.xml
+
+      # - name: PHP_CodeSniffer Check with Annotations
+      #   uses: chekalsky/phpcs-action@v1.2.0
+      #   with:
+      #     enable_warnings: true
