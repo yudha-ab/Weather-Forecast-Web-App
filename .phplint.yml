@@ -1,0 +1,11 @@
+path: ./
+jobs: 10
+cache: build/phplint.cache
+extensions:
+    - php
+exclude:
+    - bootstrap
+    - public
+    - resources
+    - storage
+    - vendor
