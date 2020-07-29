@@ -15,7 +15,7 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $input = $request->all();
-        $weather = weather::getWeather(isset($input['q'])?$input['q']:'jakarta');
+        $weather = weather::getWeather(isset($input['q']) ? $input['q'] : 'jakarta');
         return view('welcome', ['data' => $weather, 'current' => 'home']);
     }
 
