@@ -7,16 +7,31 @@ on:
     branches: [ master, development ]
 
 jobs:
-  phpcs:
-    name: phpcs
+  checkout:
+    name: checkout branch
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          
+  composer_install:
+    name: Composer Install
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Composer Action
+        uses: MilesChou/composer-action@v1.0.2
+        with:
+            args: install
 
+  phpcs:
+    name: phpcs
+    runs-on: ubuntu-latest
+    
+    steps:
       - name: Check Directories
         run: ls -la
 
