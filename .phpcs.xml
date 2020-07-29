@@ -16,6 +16,8 @@
     
     <file>.</file>
 
+    <rule ref="VariableAnalysis" />
+
     <rule ref="PSR12">
         <exclude name="PSR12.Classes.ClosingBrace.StatementAfter" />
     </rule>
@@ -48,7 +50,9 @@
         <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore" />
         <exclude name="Squiz.Files.FileExtension.ClassFound" />
         <exclude name="Squiz.Commenting.FileComment.Missing" />
-        <exclude name="Squiz.Commenting.ClosingDeclarationComment.Missing" />
+        <exclude name="Squiz.Classes.ClassDeclaration.SpaceBeforeKeyword" />
+        <exclude name="Squiz.Classes.ClassDeclaration.SpaceBeforeBrace" />
+        <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.Indent" />
     </rule>
 
     <arg name="tab-width" value="4"/>
