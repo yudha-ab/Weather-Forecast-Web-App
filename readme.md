@@ -22,6 +22,7 @@ Untuk versi Laravel ini sendiri yaitu menggunakan framework Laravel versi 5.5. U
 * Setelah itu, masih dalam terminal yang sama, masukkan command untuk copy file .env.example menjadi .env dengan cara `cp .env.example .env`
 * Jalankan perintah `php artisan key:generate`
 * Setelah proses instalasi selesai, buka browser anda dengan memasukkan alamat http://localhost/weather-forecast/public/, atau menggunakan virtual host sesuai settingan anda.
+* Apabila ada pesan error karena tidak bisa membuka file stream, berikan permission full access pada direktori web project anda, contoh: `chmod -R 777 weather-forecast/`
 
 ## Cara Kerja Aplikasi ##
 Pada saat awal anda menjalankan aplikasi ini, anda akan berada pada halaman index, pada halaman ini anda akan ditampilkan prakiraan cuaca hari ini hingga lima hari ke depan. Data tersebut diperoleh dari API yang disediakan oleh [MetaWeather](https://www.metaweather.com/api/). Lalu, data kota yang tampil pada halaman tersebut disimpan di dalam sebuah file JSON bernama `city.json`. File tersebut berada pada direktori `<WEB_DIR>/weather-forecast/storage/app/public/`. Data dalam file tersebut berbentuk JSON.
