@@ -4,7 +4,6 @@ cache: build/phplint.cache
 extensions:
     - php
 exclude:
-    - bootstrap
     - public
     - resources
     - storage
