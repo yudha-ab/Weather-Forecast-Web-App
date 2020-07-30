@@ -38,6 +38,6 @@ class LoginController extends Controller
 
        public function test_format()
     {
-
+  echo 'abc';
     }
 }
