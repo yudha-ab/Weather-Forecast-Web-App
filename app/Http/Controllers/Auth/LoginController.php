@@ -36,8 +36,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function test_format()
+       public function test_format()
     {
-        
+
     }
 }
