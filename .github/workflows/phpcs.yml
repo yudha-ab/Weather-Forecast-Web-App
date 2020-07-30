@@ -3,16 +3,8 @@ name: PHP Code Sniffer
 on:
   push:
     branches: [ master, development ]
-    paths:
-      - "**.php"
-      - "phpcs.xml"
-      - ".github/workflows/phpcs.yml"
   pull_request:
     branches: [ master, development ]
-    paths:
-      - "**.php"
-      - "phpcs.xml"
-      - ".github/workflows/phpcs.yml"
 
 jobs:
   phpcs:
@@ -25,7 +17,7 @@ jobs:
 
       - name: Composer Install
         uses: nanasess/composer-installer-action@master
-        run: coposer install
+      - run: coposer install
 
       - name: PHPCS check
         uses: chekalsky/phpcs-action@v1
