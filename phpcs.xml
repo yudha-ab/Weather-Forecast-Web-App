@@ -21,12 +21,9 @@
     <rule ref="VariableAnalysis" />
 
     <rule ref="PSR12">
-        <exclude name="PSR12.Classes.ClosingBrace.StatementAfter" />
     </rule>
 
     <rule ref="PSR1">
-        <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace" />
-        <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
     </rule>
     
     <rule ref="Squiz">
