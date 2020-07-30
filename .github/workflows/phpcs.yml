@@ -5,13 +5,13 @@ on:
     branches: [ master, development ]
     paths:
       - "**.php"
-      - ".phpcs.xml"
+      - "phpcs.xml"
       - ".github/workflows/phpcs.yml"
   pull_request:
     branches: [ master, development ]
     paths:
       - "**.php"
-      - ".phpcs.xml"
+      - "phpcs.xml"
       - ".github/workflows/phpcs.yml"
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
         with:
           files: "**.php"
           phpcs_path: php phpcs.phar
-          standard: .phpcs.xml
+          standard: phpcs.xml
 
       # - name: PHP_CodeSniffer Check with Annotations
       #   uses: chekalsky/phpcs-action@v1.2.0
