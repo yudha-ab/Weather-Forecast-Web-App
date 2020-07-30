@@ -7,6 +7,8 @@
     <arg name="extensions" value="php" />
     <arg name="colors"/>
     <arg value="sp"/>
+	<arg name="basepath" value="./" />
+    <arg name="parallel" value="8" />
 
     <exclude-pattern>*/bootstrap/*</exclude-pattern>
     <exclude-pattern>*/public/*</exclude-pattern>
